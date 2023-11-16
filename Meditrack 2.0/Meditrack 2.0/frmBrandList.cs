@@ -33,19 +33,40 @@ namespace Meditrack_2._0
                 frm.lblID.Text = dataGridView1[1, e.RowIndex].Value.ToString();
                 frm.txtBrand.Text = dataGridView1[2, e.RowIndex].Value.ToString();
                 frm.ShowDialog();
-            }else if (colName == "Delete")
+            }
+            else if (colName == "Delete")
             {
-                if(MessageBox.Show("Are you sure you want to delete this brand?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question)==DialogResult.Yes)
                 {
-                    cn.Open();
-                    cm = new SqlCommand("Delete from tblbrand where id like '" + dataGridView1[1, e.RowIndex].Value.ToString() + "'", cn);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    MessageBox.Show("Brand has been successfully deleted.", "POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadRecords();
+                    if (MessageBox.Show("Are you sure you want to delete this brand?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        string brandID = dataGridView1[1, e.RowIndex].Value.ToString();
+                        string brandName = dataGridView1[2, e.RowIndex].Value.ToString();
+
+                        tblDeletedbrands(brandID, brandName);
+
+                        cn.Open();
+                        cm = new SqlCommand("Delete from tblbrand where id like '" + dataGridView1[1, e.RowIndex].Value.ToString() + "'", cn);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("Brand has been successfully deleted.", "POS", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadRecords();
+                    }
                 }
             }
         }
+                
+            
+         private void tblDeletedbrands(string brandID, string brandName) {
+            {
+                cn.Open();
+                cm = new SqlCommand("INSERT INTO DeletedBrands (BrandID, BrandName, DeletedDateTime) VALUES (@BrandID, @BrandName, GETDATE())", cn);
+                cm.Parameters.AddWithValue("@BrandID", brandID);
+                cm.Parameters.AddWithValue("@BrandName", brandName);
+                cm.ExecuteNonQuery();
+                cn.Close();
+            }
+        }
+    
 
         public void LoadRecords()
         {

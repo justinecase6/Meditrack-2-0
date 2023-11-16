@@ -10,3 +10,4 @@ C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\obj\Debug\Meditrack 2.0.pdb
 C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\obj\Debug\Meditrack_2._0.Form1.resources
 C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\obj\Debug\Meditrack_2._0.frmBrandList.resources
 C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\obj\Debug\Meditrack_2._0.FrmBrand.resources
+C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\obj\Debug\Meditrack_2._0.FrmCategoryList.resources

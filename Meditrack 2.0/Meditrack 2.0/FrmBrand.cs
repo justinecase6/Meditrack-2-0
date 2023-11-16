@@ -48,23 +48,38 @@ namespace Meditrack_2._0
                 if (string.IsNullOrWhiteSpace(txtBrand.Text))
                 {
                     MessageBox.Show("Please fill out the brand field.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return; 
+                    return;
                 }
-                if (MessageBox.Show("Are you sure you want to save this brand?", "",MessageBoxButtons.YesNo,MessageBoxIcon.Question)==DialogResult.Yes)
+
+                cn.Open();
+                cm = new SqlCommand("SELECT COUNT(*) FROM tblbrand WHERE Brand = @brand", cn);
+                cm.Parameters.AddWithValue("@brand", txtBrand.Text);
+                int count = Convert.ToInt32(cm.ExecuteScalar());
+                cn.Close();
+
+                // Check if the brand already exists
+                if (count > 0)
                 {
-                    cn.Open();
-                    cm = new SqlCommand("INSERT INTo tblbrand(Brand)VALUEs(@brand)", cn);
-                    cm.Parameters.AddWithValue("@brand", txtBrand.Text);
-                    cm.ExecuteNonQuery(); 
-                    cn.Close();
-                    MessageBox.Show("Record has been saved successfully saved.");
-                    Clear();
-                    frmlist.LoadRecords();
+                    MessageBox.Show("Brand with the same name already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                
-            }catch (Exception ex)
+                else
+                {
+                    if (MessageBox.Show("Are you sure you want to save this brand?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        cn.Open();
+                        cm = new SqlCommand("INSERT INTO tblbrand(Brand) VALUES (@brand)", cn);
+                        cm.Parameters.AddWithValue("@brand", txtBrand.Text);
+                        cm.ExecuteNonQuery();
+                        cn.Close();
+                        MessageBox.Show("Record has been successfully saved.");
+                        Clear();
+                        frmlist.LoadRecords();
+                    }
+                }
+            }
+            catch (Exception ex)
             {
-                    MessageBox.Show(ex.Message);
+                MessageBox.Show(ex.Message);
             }
         }
 

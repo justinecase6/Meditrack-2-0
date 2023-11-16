@@ -70,7 +70,11 @@ namespace Meditrack_2._0
 
         private void btnCategory_Click(object sender, EventArgs e)
         {
-
+            FrmCategoryList frm = new FrmCategoryList();
+            frm.TopLevel = false;
+            panel3.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
         }
     }
 }
