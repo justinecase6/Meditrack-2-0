@@ -32,6 +32,8 @@ namespace Meditrack_2._0
                 FrmBrand frm = new FrmBrand(this);
                 frm.lblID.Text = dataGridView1[1, e.RowIndex].Value.ToString();
                 frm.txtBrand.Text = dataGridView1[2, e.RowIndex].Value.ToString();
+                frm.btnsave.Enabled = false;
+                frm.btnUpdate.Enabled = true;
                 frm.ShowDialog();
             }
             else if (colName == "Delete")
@@ -87,6 +89,8 @@ namespace Meditrack_2._0
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             FrmBrand frm = new FrmBrand(this);
+            frm.btnsave.Enabled = true;
+            frm.btnUpdate.Enabled = false;
             frm.ShowDialog();
         }
 

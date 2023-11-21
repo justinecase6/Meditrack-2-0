@@ -74,6 +74,7 @@ namespace Meditrack_2._0
             frm.TopLevel = false;
             panel3.Controls.Add(frm);
             frm.BringToFront();
+            frm.LoadCategory();
             frm.Show();
         }
     }

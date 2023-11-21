@@ -32,7 +32,7 @@ namespace Meditrack_2._0
         {
 
         }
-        private void Clear()
+        public void Clear()
         {
             btnsave.Enabled = true;
             btnUpdate.Enabled = false;
@@ -57,7 +57,7 @@ namespace Meditrack_2._0
                 int count = Convert.ToInt32(cm.ExecuteScalar());
                 cn.Close();
 
-                // Check if the brand already exists
+                
                 if (count > 0)
                 {
                     MessageBox.Show("Brand with the same name already exists.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -119,6 +119,11 @@ namespace Meditrack_2._0
         private void Btncancel_Click(object sender, EventArgs e)
         {
             txtBrand.Text = string.Empty;
+        }
+
+        private void txtBrand_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
