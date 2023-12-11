@@ -77,5 +77,14 @@ namespace Meditrack_2._0
             frm.LoadCategory();
             frm.Show();
         }
+
+        private void btnProduct_Click(object sender, EventArgs e)
+        {
+            frmProductList frm = new frmProductList();
+            frm.TopLevel = false;
+            panel3.Controls.Add(frm);
+            frm.BringToFront();
+            frm.Show();
+        }
     }
 }

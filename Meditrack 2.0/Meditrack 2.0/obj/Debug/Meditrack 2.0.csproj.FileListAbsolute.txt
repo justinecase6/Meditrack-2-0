@@ -12,3 +12,8 @@ C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\obj\Debug\Meditrack_2._0.frmBrandList.r
 C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\obj\Debug\Meditrack_2._0.FrmBrand.resources
 C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\obj\Debug\Meditrack_2._0.FrmCategoryList.resources
 C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\obj\Debug\Meditrack_2._0.FrmCategory.resources
+C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\obj\Debug\Meditrack_2._0.frmProduct.resources
+C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\obj\Debug\Meditrack_2._0.frmProductList.resources
+C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\bin\Debug\MetroFramework.Design.dll
+C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\bin\Debug\MetroFramework.dll
+C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\bin\Debug\MetroFramework.Fonts.dll
