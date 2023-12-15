@@ -27,6 +27,8 @@ namespace Meditrack_2._0
             frmProduct frm = new frmProduct();
             frm.btnsave.Enabled = true;
             frm.btnUpdate.Enabled = false;
+            frm.LoadBrand();
+            frm.LoadCategory();
             frm.ShowDialog();
         }
     }

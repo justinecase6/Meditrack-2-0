@@ -86,5 +86,10 @@ namespace Meditrack_2._0
             frm.BringToFront();
             frm.Show();
         }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+        }
     }
 }
