@@ -17,3 +17,4 @@ C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\obj\Debug\Meditrack_2._0.frmProductList
 C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\bin\Debug\MetroFramework.Design.dll
 C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\bin\Debug\MetroFramework.dll
 C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\bin\Debug\MetroFramework.Fonts.dll
+C:\MEDITRACK\Meditrack 2.0\Meditrack 2.0\obj\Debug\Meditrack_2._0.frmStockIn.resources

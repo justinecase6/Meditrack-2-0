@@ -84,12 +84,20 @@ namespace Meditrack_2._0
             frm.TopLevel = false;
             panel3.Controls.Add(frm);
             frm.BringToFront();
+            frm.LoadRecords();
             frm.Show();
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void btnStockIn_Click(object sender, EventArgs e)
+        {
+            frmStockIn frm = new frmStockIn();
+            frm.LoadProduct();
+            frm.ShowDialog();
         }
     }
 }
