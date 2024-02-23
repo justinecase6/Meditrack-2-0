@@ -77,5 +77,55 @@ namespace Meditrack_2._0
                 }
             }
         }
+
+        public void LoadCategoryMeds()
+        {
+            int i = 0;
+            dataGridView2.Rows.Clear();
+            cn.Open();
+            cm = new SqlCommand("SELECT * FROM tblCategoryMeds order by category", cn);
+            dr = cm.ExecuteReader();
+            while (dr.Read())
+            {
+                i++;
+                dataGridView2.Rows.Add(i, dr[0].ToString(), dr[1].ToString());
+            }
+            dr.Close();
+            cn.Close();
+        }
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string colName = dataGridView2.Columns[e.ColumnIndex].Name;
+            if (colName == "colEdit")
+            {
+                frmCategoryMeds frm = new frmCategoryMeds(this);
+                frm.txtCategory.Text = dataGridView2.Rows[e.RowIndex].Cells[2].Value.ToString();
+                frm.lblID.Text = dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString();
+                frm.btnsave.Enabled = false;
+                frm.btnUpdate.Enabled = true;
+                frm.ShowDialog();
+            }
+            else if (colName == "colDelete")
+            {
+                if (MessageBox.Show("Are you sure you want to delete this category?", "Delete Category", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    cn.Open();
+                    cm = new SqlCommand("delete from tblcategoryMeds where id like '" + dataGridView2.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", cn);
+                    cm.ExecuteNonQuery();
+                    cn.Close();
+                    MessageBox.Show("Record has been successfully deleted!");
+                    LoadCategoryMeds();
+                }
+            }
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+            frmCategoryMeds frm = new frmCategoryMeds(this);
+            frm.btnsave.Enabled = true;
+            frm.btnUpdate.Enabled = false;
+            frm.ShowDialog();
+            //this.Dispose();
+        }
     }
 }

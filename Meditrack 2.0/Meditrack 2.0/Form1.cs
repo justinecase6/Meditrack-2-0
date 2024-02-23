@@ -51,7 +51,8 @@ namespace Meditrack_2._0
 
         private void button2_Click(object sender, EventArgs e)
         {
-
+            frmPOS frm = new frmPOS();
+            frm.ShowDialog();
         }
 
         private void button6_Click(object sender, EventArgs e)
@@ -96,8 +97,26 @@ namespace Meditrack_2._0
         private void btnStockIn_Click(object sender, EventArgs e)
         {
             frmStockIn frm = new frmStockIn();
-            frm.LoadProduct();
-            frm.ShowDialog();
+            frm.TopLevel = false;
+            panel3.Controls.Add(frm);
+            frm.BringToFront();
+            //frm.LoadProduct();
+            frm.Show();
+        }
+
+        private void btnRecords_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button8_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tabPage1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

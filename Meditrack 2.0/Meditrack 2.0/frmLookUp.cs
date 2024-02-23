@@ -8,17 +8,17 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+
 namespace Meditrack_2._0
 {
-    public partial class frmProductList : Form
+    public partial class frmLookUp : Form
     {
         SqlConnection cn = new SqlConnection();
         SqlCommand cm = new SqlCommand();
         DBConnection dbcon = new DBConnection();
         SqlDataReader dr;
         string stitle = "MediTrack";
-        
-        public frmProductList()
+        public frmLookUp()
         {
             InitializeComponent();
             cn = new SqlConnection(dbcon.MyConnection());
@@ -27,16 +27,6 @@ namespace Meditrack_2._0
         private void pictureBox2_Click(object sender, EventArgs e)
         {
             this.Dispose();
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-            frmProduct frm = new frmProduct(this);
-            frm.btnsave.Enabled = true;
-            frm.btnUpdate.Enabled = false;
-            frm.LoadBrand();
-            frm.LoadCategory();
-            frm.ShowDialog();
         }
 
         public void LoadRecords()
@@ -63,30 +53,10 @@ namespace Meditrack_2._0
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string colName = dataGridView1.Columns[e.ColumnIndex].Name;
-            if (colName == "Edit")
+            if (colName == "Select")
             {
-                frmProduct frm = new frmProduct(this);
-                frm.btnsave.Enabled = false;
-                frm.btnUpdate.Enabled = true;
-                frm.txtPcode.Text = dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString();
-                frm.txtBarcode.Text = dataGridView1.Rows[e.RowIndex].Cells[2].Value.ToString();
-                frm.txtPdesc.Text = dataGridView1.Rows[e.RowIndex].Cells[3].Value.ToString();
-                frm.txtPrice.Text = dataGridView1.Rows[e.RowIndex].Cells[6].Value.ToString();
-                frm.cboBrand.Text = dataGridView1.Rows[e.RowIndex].Cells[4].Value.ToString();
-                frm.cboCategory.Text = dataGridView1.Rows[e.RowIndex].Cells[5].Value.ToString();
-                frm.ShowDialog();
-            }
-            else
-            {
-                if (MessageBox.Show("Are you sure you want to delete this record?", "Delete Record", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
-                {
-                    cn.Open();
-                    cm = new SqlCommand("delete from tblproduct where pcode like '" + dataGridView1.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", cn);
-                    cm.ExecuteNonQuery();
-                    cn.Close();
-                    LoadRecords();
-                }
-            }
+                MessageBox.Show("Code here to add product to cart");
+            } 
         }
     }
 }
